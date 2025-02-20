@@ -155,47 +155,51 @@
           </div>
 
           <div class="col-lg-5" data-aos="zoom-out" data-aos-delay="200">
-            <form name="devis" method="POST" data-netlify="true" class="php-email-form">
-              <h3>Obtenez un devis</h3>
-              <p>Pour toutes vos demandes, contactez-nous pour obtenir un devis personnalisé.</p>
-              <div class="row gy-3">
-                <!-- Champ caché nécessaire pour Netlify -->
-                <input type="hidden" name="form-name" value="devis">
+            <form name="devis" 
+                  method="POST" 
+                  action="/"
+                  data-netlify="true" 
+                  class="php-email-form">
+                <h3>Obtenez un devis</h3>
+                <p>Pour toutes vos demandes, contactez-nous pour obtenir un devis personnalisé.</p>
+                <div class="row gy-3">
+                    <!-- Champ caché nécessaire pour Netlify -->
+                    <input type="hidden" name="form-name" value="devis">
+                    <input type="hidden" name="subject" value="Nouvelle demande de devis">
 
-                <div class="col-12">
-                  <input type="text" name="name" class="form-control" placeholder="Nom" required>
+                    <div class="col-12">
+                        <input type="text" name="name" class="form-control" placeholder="Nom" required>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="email" class="form-control" name="email" placeholder="Email" required>
+                    </div>
+
+                    <div class="col-12">
+                        <input type="text" class="form-control" name="phone" placeholder="Téléphone" required>
+                    </div>
+
+                    <div class="col-12">
+                        <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Votre demande de devis a été envoyée avec succès. Merci!</div>
+
+                        <button type="submit">Obtenir un devis</button>
+                        <div class="contact-info mt-4">
+                            <p>Si le formulaire ne fonctionne pas, vous pouvez nous contacter directement :</p>
+                            <ul>
+                                <li>Téléphone : <a href="tel:0612319737">06 12 31 97 37</a></li>
+                                <li>Email : <a href="mailto:bat.associes@yahoo.fr">bat.associes@yahoo.fr</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="col-12">
-                  <input type="email" class="form-control" name="email" placeholder="Email" required>
-                </div>
-
-                <div class="col-12">
-                  <input type="text" class="form-control" name="phone" placeholder="Téléphone" required>
-                </div>
-
-                <div class="col-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
-                </div>
-
-                <div class="col-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Votre demande de devis a été envoyée avec succès. Merci!</div>
-
-                  <button type="submit">Obtenir un devis</button>
-                  <div class="contact-info mt-4">
-                    <p>Si le formulaire ne fonctionne pas, vous pouvez nous contacter directement :</p>
-                    <ul>
-                      <li>Téléphone : <a href="tel:0612319737">06 12 31 97 37</a></li>
-                      <li>Email : <a href="mailto:bat.associes@yahoo.fr">bat.associes@yahoo.fr</a></li>
-                    </ul>
-                  </div>
-                </div>
-
-              </div>
             </form>
-          </div><!-- End Quote Form -->
+          </div>
 
         </div>
 
