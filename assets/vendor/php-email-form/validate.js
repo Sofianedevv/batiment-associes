@@ -56,7 +56,7 @@
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
     .then(response => {
-      if( response.ok ) {
+      if(response.ok) {
         return response.text();
       } else {
         throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
@@ -66,9 +66,10 @@
       thisForm.querySelector('.loading').classList.remove('d-block');
       if (data.trim() == 'OK') {
         thisForm.querySelector('.sent-message').classList.add('d-block');
+        thisForm.querySelector('.sent-message').innerHTML = 'Votre message a été envoyé. Merci!';
         thisForm.reset(); 
       } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
+        throw new Error(data ? data : 'Erreur lors de l\'envoi du formulaire: ' + action); 
       }
     })
     .catch((error) => {

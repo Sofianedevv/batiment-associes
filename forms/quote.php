@@ -6,37 +6,40 @@
   * For more info and help: https://bootstrapmade.com/php-email-form/
   */
 
-  // Replace contact@example.com with your real receiving email address
+  // Configuration pour l'envoi d'email
   $receiving_email_address = 'sofiane.chadili@hotmail.com';
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
+  // Récupération des données du formulaire
+  $name = $_POST['name'] ?? '';
+  $email = $_POST['email'] ?? '';
+  $phone = $_POST['phone'] ?? '';
+  $message = $_POST['message'] ?? '';
+
+  // Validation basique
+  if (empty($name) || empty($email) || empty($phone) || empty($message)) {
+    die('Please fill all the fields');
   }
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = 'Request for a quote';
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    die('Invalid email format');
+  }
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+  // Préparation du contenu de l'email
+  $email_content = "Nouveau message de devis :\n\n";
+  $email_content .= "Nom: " . $name . "\n";
+  $email_content .= "Email: " . $email . "\n";
+  $email_content .= "Téléphone: " . $phone . "\n";
+  $email_content .= "Message:\n" . $message . "\n";
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['phone'], 'Phone');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+  // En-têtes de l'email
+  $headers = "From: " . $email . "\r\n";
+  $headers .= "Reply-To: " . $email . "\r\n";
+  $headers .= "X-Mailer: PHP/" . phpversion();
 
-  echo $contact->send();
+  // Envoi de l'email
+  if (mail($receiving_email_address, "Nouvelle demande de devis", $email_content, $headers)) {
+    echo "OK";
+  } else {
+    echo "Une erreur est survenue lors de l'envoi du message.";
+  }
 ?>
