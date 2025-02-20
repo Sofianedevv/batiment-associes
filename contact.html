@@ -134,31 +134,47 @@
 
           <div class="col-lg-6">
             <form name="contact" 
-                  action="/success" 
                   method="POST" 
-                  data-netlify="true">
+                  netlify
+                  data-netlify="true" 
+                  class="php-email-form" 
+                  data-aos="fade-up" 
+                  data-aos-delay="400">
+              <!-- Champ caché nécessaire pour Netlify -->
+              <input type="hidden" name="form-name" value="contact">
               <div class="row gy-4">
-                <input type="hidden" name="form-name" value="contact">
 
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Votre nom" required>
+                  <input type="text" name="name" class="form-control" placeholder="Votre nom" required="">
                 </div>
 
-                <div class="col-md-6">
-                  <input type="email" class="form-control" name="email" placeholder="Votre email" required>
+                <div class="col-md-6 ">
+                  <input type="email" class="form-control" name="email" placeholder="Votre email" required="">
                 </div>
 
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Objet" required>
+                  <input type="text" class="form-control" name="subject" placeholder="Objet" required="">
                 </div>
 
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
                 </div>
 
                 <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Votre message a été envoyé. Merci !</div>
+
                   <button type="submit">Envoyer</button>
+                  <div class="contact-info mt-4">
+                    <p>Si le formulaire ne fonctionne pas, vous pouvez nous contacter directement :</p>
+                    <ul>
+                      <li>Téléphone : <a href="tel:0612319737">06 12 31 97 37</a></li>
+                      <li>Email : <a href="mailto:bat.associes@yahoo.fr">bat.associes@yahoo.fr</a></li>
+                    </ul>
+                  </div>
                 </div>
+
               </div>
             </form>
           </div><!-- End Contact Form -->

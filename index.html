@@ -156,13 +156,14 @@
 
           <div class="col-lg-5" data-aos="zoom-out" data-aos-delay="200">
             <form name="devis" 
-                  action="/success" 
                   method="POST" 
-                  data-netlify="true">
+                  data-netlify="true"
+                  data-netlify-recaptcha="true">
                 <h3>Obtenez un devis</h3>
                 <p>Pour toutes vos demandes, contactez-nous pour obtenir un devis personnalisé.</p>
                 <div class="row gy-3">
                     <input type="hidden" name="form-name" value="devis">
+                    <input type="hidden" name="subject" value="Nouvelle demande de devis">
 
                     <div class="col-12">
                         <input type="text" name="name" class="form-control" placeholder="Nom" required>
@@ -179,6 +180,8 @@
                     <div class="col-12">
                         <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
                     </div>
+
+                    <div data-netlify-recaptcha="true"></div>
 
                     <div class="col-12 text-center">
                         <button type="submit">Obtenir un devis</button>
